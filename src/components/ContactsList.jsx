@@ -5,6 +5,7 @@ import useContactsStore from '../stores/useContactsStore';
 
 const ContactsList = ({ keyword }) => {
   const contacts = useContactsStore((state) => state.contacts);
+  const deleteContact = useContactsStore((state) => state.deleteContact);
 
   const filteredContacts = keyword
     ? contacts.filter((contact) => contact.name.toLowerCase().includes(keyword))
@@ -21,7 +22,7 @@ const ContactsList = ({ keyword }) => {
             <AccountCircleIcon color='primary' sx={{ fontSize: '50px' }} />
           </ListItemAvatar>
           <ListItemText primary={contact.name} secondary={contact.phoneNumber} />
-          <Button variant='contained'>
+          <Button variant='contained' onClick={() => deleteContact(contact.id)}>
             <DeleteForeverIcon />
           </Button>
         </ListItem>

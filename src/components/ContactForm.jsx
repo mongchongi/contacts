@@ -15,10 +15,13 @@ const ContactForm = () => {
     }
 
     addContact(nameInput, phoneNumberInput);
+
+    setNameInput('');
+    setPhoneNumberInput('');
   };
 
   return (
-    <Box display={'flex'} flexDirection={'column'} alignItems={'center'} gap={'20px'} padding={'0 20px'}>
+    <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <TextField
         id='standard-basic'
         label='이름'

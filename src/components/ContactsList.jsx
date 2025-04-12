@@ -6,10 +6,11 @@ const ContactsList = () => {
   const contacts = useContactsStore((state) => state.contacts);
 
   return (
-    <List sx={{ width: '100%', height: '600px' }}>
+    <List sx={{ width: '100%', overflowY: 'auto', height: 'calc(100vh - 64px)', padding: '0' }}>
       {contacts.map((contact) => (
         <ListItem
-          sx={{ transition: 'background 0.5s', cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.1)' } }}
+          key={contact.id}
+          sx={{ transition: 'background 0.5s', cursor: 'pointer', '&:hover': { bgcolor: 'rgb(56, 116, 203, 0.1)' } }}
         >
           <ListItemAvatar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mr: '10px' }}>
             <AccountCircleIcon color='primary' sx={{ fontSize: '50px' }} />

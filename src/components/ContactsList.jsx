@@ -1,13 +1,17 @@
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import useContactsStore from '../stores/useContactsStore';
 
-const ContactsList = () => {
+const ContactsList = ({ keyword }) => {
   const contacts = useContactsStore((state) => state.contacts);
+
+  const filteredContacts = keyword
+    ? contacts.filter((contact) => contact.name.toLowerCase().includes(keyword))
+    : contacts;
 
   return (
     <List sx={{ width: '100%', overflowY: 'auto', height: 'calc(100vh - 64px)', padding: '0' }}>
-      {contacts.map((contact) => (
+      {filteredContacts.map((contact) => (
         <ListItem
           key={contact.id}
           sx={{ transition: 'background 0.5s', cursor: 'pointer', '&:hover': { bgcolor: 'rgb(56, 116, 203, 0.1)' } }}

@@ -9,12 +9,14 @@ import useContactsStore from './stores/useContactsStore';
 
 const App = () => {
   const [open, setOpen] = useState(false);
+  const [keyword, setKeyword] = useState('');
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const contacts = useContactsStore((state) => state.contacts);
-
-  const handleSearch = (event) => {};
+  const handleSearch = (event) => {
+    setKeyword(event.target.value.toLowerCase());
+  };
 
   return (
     <>
@@ -39,7 +41,7 @@ const App = () => {
           <ContactForm />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <ContactsList />
+          <ContactsList keyword={keyword} />
         </Grid>
       </Grid>
 

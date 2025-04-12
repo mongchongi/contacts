@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 import './App.css';
 import ContactForm from './components/ContactForm';
+import ContactsList from './components/ContactsList';
 
 const App = () => {
   return (
@@ -10,7 +11,9 @@ const App = () => {
         <Grid size={6}>
           <ContactForm />
         </Grid>
-        <Grid size={6}>item 2</Grid>
+        <Grid size={6}>
+          <ContactsList />
+        </Grid>
       </Grid>
     </div>
   );

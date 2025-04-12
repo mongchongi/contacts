@@ -1,5 +1,6 @@
-import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { Button, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import useContactsStore from '../stores/useContactsStore';
 
 const ContactsList = ({ keyword }) => {
@@ -20,6 +21,9 @@ const ContactsList = ({ keyword }) => {
             <AccountCircleIcon color='primary' sx={{ fontSize: '50px' }} />
           </ListItemAvatar>
           <ListItemText primary={contact.name} secondary={contact.phoneNumber} />
+          <Button variant='contained'>
+            <DeleteForeverIcon />
+          </Button>
         </ListItem>
       ))}
     </List>

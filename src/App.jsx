@@ -5,14 +5,10 @@ import './App.css';
 import ContactForm from './components/ContactForm';
 import ContactsList from './components/ContactsList';
 import { useState } from 'react';
-import useContactsStore from './stores/useContactsStore';
 
 const App = () => {
   const [open, setOpen] = useState(false);
   const [keyword, setKeyword] = useState('');
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const handleSearch = (event) => {
     setKeyword(event.target.value.toLowerCase());
@@ -55,13 +51,13 @@ const App = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}
-        onClick={handleOpen}
+        onClick={() => setOpen(true)}
       >
         <AddCallIcon />
       </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >

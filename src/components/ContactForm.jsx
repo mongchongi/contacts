@@ -1,16 +1,17 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import useContactsStore from '../stores/useContactsStore';
 
 const ContactForm = () => {
   const [nameInput, setNameInput] = useState('');
   const [phoneNumberInput, setPhoneNumberInput] = useState('');
+  const [open, setOpen] = useState(false);
 
   const addContact = useContactsStore((state) => state.addContact);
 
   const handleAddContact = () => {
     if (!nameInput.trim() || !phoneNumberInput.trim()) {
-      alert('이름 또는 연락처를 입력해 주세요.');
+      setOpen(true);
       return;
     }
 
@@ -41,8 +42,30 @@ const ContactForm = () => {
       <Button variant='contained' fullWidth sx={{ mt: '20px' }} onClick={handleAddContact}>
         추가하기
       </Button>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
+      >
+        <Box sx={style}>
+          <Typography id='modal-modal-description' fontWeight={'bold'} textAlign={'center'}>
+            이름 또는 연락처를 입력해 주세요.
+          </Typography>
+        </Box>
+      </Modal>
     </Box>
   );
 };
 
 export default ContactForm;
+const style = {
+  position: 'absolute',
+  top: '20px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: { xs: '90%', sm: '30%' },
+  bgcolor: 'background.paper',
+  p: 4,
+  borderRadius: '5px',
+};

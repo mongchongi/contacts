@@ -12,7 +12,14 @@ const ContactsList = ({ keyword }) => {
     : contacts;
 
   return (
-    <List sx={{ width: '100%', overflowY: 'auto', height: 'calc(100vh - 64px)', padding: '0' }}>
+    <List
+      sx={{
+        width: '100%',
+        overflowY: 'auto',
+        height: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
+        padding: '0',
+      }}
+    >
       {filteredContacts.map((contact) => (
         <ListItem
           key={contact.id}

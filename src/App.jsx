@@ -22,6 +22,20 @@ const App = () => {
             <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
               연락처 앱
             </Typography>
+            <Button
+              variant='contained'
+              sx={{
+                height: '39px',
+                display: { xs: 'flex', sm: 'none' },
+                alignItems: 'center',
+                justifyContent: 'center',
+                mr: '15px',
+                bgcolor: 'rgba(255, 255, 255, 0.16)',
+              }}
+              onClick={() => setOpen(true)}
+            >
+              <AddCallIcon />
+            </Button>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -41,21 +55,6 @@ const App = () => {
         </Grid>
       </Grid>
 
-      <Button
-        variant='contained'
-        sx={{
-          position: 'fixed',
-          left: '50%',
-          bottom: '20px',
-          transform: 'translateX(-50%)',
-          display: { xs: 'flex', sm: 'none' },
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        onClick={() => setOpen(true)}
-      >
-        <AddCallIcon />
-      </Button>
       <Modal
         open={open}
         onClose={() => setOpen(false)}

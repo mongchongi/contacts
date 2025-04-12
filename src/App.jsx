@@ -45,8 +45,9 @@ const App = () => {
         variant='contained'
         sx={{
           position: 'fixed',
-          right: '20px',
+          left: '50%',
           bottom: '20px',
+          transform: 'translateX(-50%)',
           display: { xs: 'flex', sm: 'none' },
           alignItems: 'center',
           justifyContent: 'center',
